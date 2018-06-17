@@ -32,9 +32,7 @@ detailedUsage() {
     echo "Limitations: "
     echo " only one option should be given; a second one overrides"
 }
-# day=0
-# week=0
-# isday=true
+
 timeLen=0
 timeUnit=("days" "week")
 timeUnitIndex=0
