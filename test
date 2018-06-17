@@ -1,0 +1,45 @@
+#!/bin/bash
+############################################################################
+#
+# Usage: loc7.sh [options] file ...
+#
+# Count the number of lines in a given list of files.
+# Uses a for loop over all arguments.
+#
+# Options:
+#  -h     ... help message
+#  -d n ... consider only files modified within the last n days
+#  -w n ... consider only files modified within the last n weeks
+#
+# Limitations: 
+#  . only one option should be given; a second one overrides
+#
+############################################################################
+simpleUsage() {
+    echo "Usage: $0 [options] file ..."
+}
+detailedUsage() {
+    # echo "Usage: "
+    eimpleUsage
+    echo "Options:"
+    echo -e " -h\t ...help message"
+    echo -e " -d n\t ...consider only files modified within the last n days"
+    echo -e " -w n\t ...consider only files modified within the last n weeks"
+
+    echo "Limitations: "
+    echo " only one option should be given; a second one overrides"
+}
+day=0
+week=0
+timeUnit=""
+
+while getopts "hd:w:" opt
+do
+    case $opt in
+    h)  detailedUsage
+    d)  day=$OPTARG
+        timeUnit="days"
+    W)  week=$OPTARG
+        timeUnit="weeks"
+    esac
+done
