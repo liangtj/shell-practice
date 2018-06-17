@@ -81,7 +81,7 @@ do
     if [ $stdfileLastModTime -ge $designatedTime ]
     then
         fileLineCount=`wc -l $file | sed 's/\([0-9]*\).*/\1/'`
-        lineCount+=$fileLineCount
+        (( lineCount += $fileLineCount ))
         if [ $verbose = true ]
         then 
             echo "  $file: $fileLineCount lines in total"
