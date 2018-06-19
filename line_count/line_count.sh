@@ -58,6 +58,7 @@ do
         # isday=false
         (( optCount+=2 ))
         ;;
+    # [?]) echo '????'
     esac
 done
 

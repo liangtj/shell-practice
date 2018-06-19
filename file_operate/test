@@ -1,0 +1,54 @@
+#!/bin/bash 
+############################################################################
+#
+# Usage: ./fileConcat.sh [options] file ...
+#
+# Count the number of lines in a given list of files.
+# Uses a for loop over all arguments.
+#
+# Options:
+#  -h   ... help message
+#  -v   ... get detailed message
+#  -o   ... output filename
+#
+#
+############################################################################
+
+Usage() {
+    echo -e "Usage: $0 [options] file ...\n"
+    echo "Concat all files into a file"
+    echo "Options: "
+    echo " -h ... help message"
+    echo " -v ... get detailed message"
+    echo " -o ... output filename"
+}
+
+verb=false
+targetFile=""
+optCount=0
+
+while getopts "hvo:" opt
+do
+    case $opt in
+        h)  Usage
+            (( optCount++ ))
+            ;;
+        v)  verb=true
+            (( optCount++ ))
+            ;;
+        o)  targetFile=$OPTARG
+            (( optCount+=2 ))
+            ;;
+    esac
+done
+shift optCount
+
+for file in $@
+do
+    `cat $file >> $targetFile`
+
+
+
+
+
+
